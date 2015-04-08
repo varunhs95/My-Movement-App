@@ -1,0 +1,125 @@
+<html>
+
+	<head>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>MyMovement</title>
+
+
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+<style type="text/css">
+    html { height: 100% }
+    body { height: 100%; margin: 0; padding: 0 }
+    #map_canvas { height: 100%; width: 100% }
+</style>
+
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+<!--script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script-->
+    
+<script type="text/javascript">
+
+var map;
+var center;
+var myLatlng;
+var lat, lng, button;
+
+function initialize() {
+    var coordinates = document.getElementById("txtLatLng").value.split(/[,:]/);
+    console.log(coordinates);
+    myLatlng = new google.maps.LatLng(parseFloat(coordinates[0]), parseFloat(coordinates[1]));
+    console.log(myLatlng);
+    
+    latEl = document.getElementById('latitude');
+    lngEl = document.getElementById('longitude');
+    button = document.getElementById('setMarker');
+    google.maps.event.addDomListener(button, 'click', setMarker);
+    
+    var mapOptions = {
+        zoom: 12,
+        center: myLatlng
+    }
+    map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);          
+
+    var marker = new google.maps.Marker({
+    position: myLatlng,
+    map: map
+    });
+    a=getz();
+    alert(a);
+
+
+
+}
+
+function setMarker() {
+    var latitude = latEl.value;
+    var longitude = lngEl.value;
+    
+    if (latitude == '' || longitude == '') {
+        console.log('lat or lng not defined');
+        return;
+    }
+    
+    var position = new google.maps.LatLng(parseFloat(latitude), 
+                                          parseFloat(longitude));
+
+    var marker = new google.maps.Marker({
+        position: position,
+        map:      map
+    });
+    
+    map.setCenter(position);
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+function getz() {
+
+		alert('hi');
+		   var xmlHttp = null;		
+
+		xmlhttp.open("GET","https://api.usergrid.com/darshak95/mymovement/stores/7ce67dda-a9e6-11e4-82d9-593b09e5808f?client_id=YXA6inNfaqlnEeS8-OEn4OBNGQ&client_secret=YXA6oRn-jqUxzSehS3QeSuwmTsFGdfI",false);
+		alert('hi');
+		xmlHttp.send( null );
+		alert('hi');
+		alert (xmlHttp.responseText)
+		alert('hi');
+  	    return ( xmlHttp.responseText);
+
+		
+}
+    
+		</script>
+		    
+	</head>
+
+
+	<body>
+
+
+	<nav>
+		 <p>My Movement
+	</nav>	
+
+	<div>
+   
+    <div id='map_canvas'></div>
+     LatLng    <input type='text' id='txtLatLng' value='46.50 : 13.50' />
+    Latitude: <input type='text' id='latitude' value='' />
+    Longitude: <input type='text' id='longitude' value='' />
+    <input type='button' id='setMarker' value='Set Marker' />
+    </div>
+
+
+
+
+	</body>
+
+	<footer>
+		<h3>Join In</h3>
+	</footer>
+
+	
+
+
+	</html>

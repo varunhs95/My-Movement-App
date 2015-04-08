@@ -1,0 +1,74 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300,700);
+@import 'jeet/index';
+$font: 'Open Sans', sans-serif;
+
+$map_blue: #141823;
+$geometry_gray: #f9fafb;
+$dark_geometry_gray: #f1f1f1;
+$red: #FF0000;
+
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+
+
+@-ms-viewport{
+  width: device-width;
+}
+
+* {
+	margin:0;
+	padding:0;
+	font-family: $font;
+}
+
+
+
+nav{
+	width: 100%;
+	background: #FF0000;
+	opacity: 0.7;
+	padding-top : 0.5em;
+	padding-bottom: 0.5em;
+	z-index: 1;
+	
+}
+
+article{
+	width:100%;
+
+	p{ background-color: yellow;
+		border: 1px solid black;
+		text-align: left;
+		width :100%;
+		font-size: 10vw;
+	}
+	input{
+		text-align: left;
+		width: 100%;
+		font-size: 10vw;
+	}
+
+	#sign_in{
+		background-color: blue;
+	}
+
+}
+
+
+footer{
+	float: right;
+	display: block;
+	width:100%;
+	background: #FF0000;
+	opacity: 1;
+	text-align: center;
+	padding-top: 2em;
+	padding-bottom: 2em;
+
+}
+
